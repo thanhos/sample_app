@@ -311,6 +311,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  azure
   bcrypt (= 3.1.7)
   bootstrap-sass (= 3.2.0.0)
   bootstrap-will_paginate (= 0.0.10)

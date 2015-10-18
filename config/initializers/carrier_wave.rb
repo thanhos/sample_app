@@ -1,7 +1,11 @@
-CarrierWave.configure do |config|
-  config.azure_storage_account_name = 'micropost'
-  config.azure_storage_access_key = 'Z4Twj5d23sC8+YnFf54+YmujIi0ANfEB4Xd+VMlm398c2GAcxvHS1tSJbD4zBGX8t+I8zB8ose4khvQYxhnEUQ=='
-#  config.azure_storage_blob_host = 'YOUR STORAGE BLOB HOST' # optional
-  config.azure_container = 'azure-container-micropost'
-#  config.asset_host = 'YOUR CDN HOST' # optional
+if Rails.env.production?
+  CarrierWave.configure do |config|
+    config.fog_credentials = {
+      # Configuration for Amazon S3
+      :provider              => 'AWS',
+      :aws_access_key_id     => ENV['S3_ACCESS_KEY'],
+      :aws_secret_access_key => ENV['S3_SECRET_KEY']
+    }
+    config.fog_directory     =  ENV['S3_BUCKET']
+  end
 end
